@@ -1,0 +1,64 @@
+<div class="container" ng-controller="editEmployeeRouteController">
+
+    <h2>Edit Employee:</h2>
+
+    <form>
+        <input type="reset" ng-click="resetModel()">
+        <br>
+        <br>
+
+        <label>Image</label>
+        <br>
+        <img ng-src="uploads/{{image}}" alt="image" width="200" height="132">
+        <br>
+        <input class="w3-input w3-border" type="file" id="file">
+        <br>
+
+        <label>Name:</label>
+        <input class="w3-input w3-border" type="text" ng-model="name" placeholder="Name">
+        <br>
+
+        <label>Password:</label>
+        <input class="w3-input w3-border" type="password" ng-model="passWord" placeholder="Password">
+        <br>
+
+        <label>Repeat Password:</label>
+        <input class="w3-input w3-border" type="password" ng-model="passWord2" placeholder="Repeat Password">
+        <br>
+
+        <label>Title:</label>
+        <input class="w3-input w3-border" type="text" ng-model="title" placeholder="Title">
+        <br>
+
+        <label>Manager:</label>
+        <select class="w3-input w3-border" ng-model="selectedManager" ng-options="x.name for x in managerArray">
+        </select>
+        <br>
+
+        <label>Report_To:</label>
+        <select class="w3-input w3-border" ng-model="selectedReportTo" ng-options="x.name for x in reportToArray"
+                multiple="multiple">
+        </select>
+        <br>
+
+        <label>Phone:</label>
+        <input class="w3-input w3-border" type="text" ng-model="phone" placeholder="Phone">
+        <br>
+
+        <label>Email:</label>
+        <input class="w3-input w3-border" type="email" ng-model="email" placeholder="Email">
+        <br>
+
+        <label>Sex:</label>
+        <input class="w3-input w3-border" type="text" ng-model="sex" placeholder="Sex">
+        <br>
+
+        <label>Age:</label>
+        <input class="w3-input w3-border" type="number" ng-model="age" placeholder="Age">
+        <br>
+
+        <button class="w3-btn w3-green w3-ripple" ng-disabled="error||incomplete" ng-click="saveChange()">&#10004; Save
+            New Employee
+        </button>
+    </form>
+</div>

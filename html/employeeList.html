@@ -1,0 +1,52 @@
+<div ng-controller="employeeListRouteController" class="container-flow">
+    <h3>Employee List</h3>
+    <form class="form-inline">
+        <div class="form-group">
+            <label>Search</label>
+            <input type="text" ng-model="searchItem">
+        </div>
+        <input type="button" ng-click="refreshAllEmployees()" class="btn btn-info" value="refresh all employees">
+    </form>
+
+    <br><br>
+    <div class="table-responsive">
+        <table class="employeeList table table-striped table-hover table-bordered table-condensed">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Manager ID</th>
+                <th>Report To</th>
+                <th>Sex</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="employee in data |filter:searchItem">
+                <td>{{ employee._id }}</td>
+                <td><img ng-src="uploads/{{employee.image}}" alt="image" width="100" height="66"></td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.title }}</td>
+                <td class="managerID" ng-click="getManager(employee)">{{ employee.managerID }}</td>
+                <td class="reportTo" ng-click="getSubordinate(employee)">{{ employee.reportTo.length }}</td>
+                <td>{{ employee.sex }}</td>
+                <td>{{ employee.age }}</td>
+                <td><a href="tel:{{ employee.phone}}">{{ employee.phone}}</a></td>
+                <td><a href="mailto:{{ employee.email}}">{{ employee.email}}</a></td>
+                <td>
+                    <button class="btn btn-primary" ng-click="editEmployee(employee._id)">&#9998; Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" ng-click="deleteEmployee(employee._id)">&#9998; Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

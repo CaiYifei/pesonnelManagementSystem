@@ -1,0 +1,18 @@
+table {
+    overflow: auto;
+}
+
+table thead th {
+    background-color: yellowgreen;
+    height: 40px;
+}
+
+table tr th, table tr td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.managerID:hover, .reportTo:hover {
+    background-color: #00cc66;
+    color: white;
+}
