@@ -1,5 +1,5 @@
 {
-  "name": "c",
+  "name": "personnel-management-system",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -33,7 +33,20 @@
   },
   "main": "app.js",
   "devDependencies": {},
-  "author": "",
+  "author": "Yifei Cai",
   "license": "ISC",
-  "description": ""
+  "description": "personnel management web system",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaiYifei/pesonnelManagementSystem.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "Bootstrap",
+    "NodeJS"
+  ],
+  "bugs": {
+    "url": "https://github.com/CaiYifei/pesonnelManagementSystem/issues"
+  },
+  "homepage": "https://github.com/CaiYifei/pesonnelManagementSystem#readme"
 }

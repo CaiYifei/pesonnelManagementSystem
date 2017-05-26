@@ -28,7 +28,6 @@ app.factory('employees', function ($http) {
             return $http.get("/api/manager/" + m_id);
         },
         createNewEmployee: function (formData) {
-            //now post it
             return $http.post('/api/employee', formData, {
                 transformRequest: angular.identity,
                 headers: {
@@ -93,7 +92,7 @@ app.controller('employeeListRouteController', function ($scope, $location, emplo
         });
     };
 
-    //endless scrolling
+    //infinite scrolling
     angular.element(window).scroll(function () {
         var pageNo = $scope.pageNo;
         if (angular.element(window).scrollTop() == (angular.element(document).height() - angular.element(window).height()))
@@ -285,8 +284,6 @@ app.controller('newEmployeeRouteController', function ($scope, $location, employ
         formData.append('managerID', $scope.selectedManager._id);
 
         var rep = [];
-        // console.log("$scope.selectedReportTo: "+$scope.selectedReportTo);
-        // console.log("$scope.selectedReportTo.length: "+$scope.selectedReportTo.length);
         if ($scope.selectedReportTo != undefined) {
             for (var i = 0; i < $scope.selectedReportTo.length; i++) {
                 if ($scope.selectedReportTo[i]._id) {
@@ -354,7 +351,6 @@ app.controller('editEmployeeRouteController', function ($scope, $location, emplo
                         for (m = 0; m < temp.reportTo.length; m++) {
                             for (n = 0; n < $scope.employees.length; n++) {
                                 if (temp.reportTo[m] == $scope.employees[n]._id) {
-                                    //$scope.selectedManager=$scope.employees[j];
                                     array1.push($scope.employees[n]);
                                     array2.push($scope.employees[n]);
                                     break;
@@ -482,7 +478,6 @@ app.controller('editEmployeeRouteController', function ($scope, $location, emplo
             }
         } else {
             var manager = $scope.selectedManager;
-            //console.log("manager.name: "+manager.name);
             while (manager.managerID != "") {
                 for (i = 0; i < $scope.employees.length; i++) {
                     if ($scope.employees[i]._id == manager.managerID) {
@@ -502,18 +497,11 @@ app.controller('editEmployeeRouteController', function ($scope, $location, emplo
     };
 
     $scope.saveChange = function () {
-        console.log("step 1********************************************************************************");
         var formData = new FormData;
-
         var file = $('#file')[0].files[0];
-
         if (file != undefined) {
             formData.append('image', file);
         }
-
-        //console.log("file: "+file);
-
-        //formData.append('image', file);
         formData.append('name', $scope.name);
         formData.append('passWord', $scope.passWord);
         formData.append('title', $scope.title);
@@ -538,7 +526,5 @@ app.controller('editEmployeeRouteController', function ($scope, $location, emplo
         employees.editEmployee(idn, formData).then(function () {
             $location.url("/employeeList");
         });
-
     };
-
 });
